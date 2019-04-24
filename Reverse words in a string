@@ -2,21 +2,27 @@ class Solution {
 public:
     string reverseWords(string s) {
         stack<string> stk;
-        string words,ans;
-        string::iterator itr,f;
+        int x=0;
+        string words;
        
         stringstream ss(s);
         
         while(ss>>words)
         {
-            cout<<words<<" ";
-            stk.push(words+' ');
+            stk.push(words);
+            x++;
         }
+        words.clear();
         while(!stk.empty())
         {
-            ans.append(stk.top());
+            words.append(stk.top());
+            if(x>1)
+            {
+                words.push_back(' ');
+                x--;
+            }
             stk.pop();
         }
-return ans;
+return words;
     }
 };
