@@ -1,0 +1,33 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> a;
+        vector<int>::iterator itr;
+        for(int i=0;i<nums1.size();i++)
+        {
+           itr=find(nums2.begin(),nums2.end(),nums1[i]);
+            int x=distance(nums2.begin(),itr);
+            if(x==nums2.size()-1)
+            {
+                a.push_back(-1);
+            }
+            else 
+            {
+                int j;
+                for(j=x;j<nums2.size();j++)
+                {
+                    if(nums2[j]>nums1[i])
+                    {
+                        a.push_back(nums2[j]);
+                        break;
+                    }
+                }
+                if(j==nums2.size())
+                {
+                    a.push_back(-1);
+                }
+            }
+        }
+        return a;
+    }
+};
